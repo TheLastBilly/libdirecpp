@@ -1,4 +1,4 @@
-# DireCpp
+# libdirecpp
 
 DireCpp is a C/C++ library used to control Terminal Node Controllers. This is havely based on the [Direwolf](https://github.com/wb2osz/direwolf) project by [wb2osz](https://github.com/wb2osz) and it's primarily meant to work with it.
 
