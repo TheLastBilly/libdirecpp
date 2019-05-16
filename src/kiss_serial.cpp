@@ -1,6 +1,6 @@
-#include "../include/kiss_serial.hpp"
-#include "../include/ax25.hpp"
-#include "../include/kiss.hpp"
+#include "kiss_serial.hpp"
+#include "ax25.hpp"
+#include "kiss.hpp"
 
 namespace KissSerial{
 

@@ -1,4 +1,4 @@
-#include "../include/ax25.hpp"
+#include "ax25.hpp"
 
 namespace AX25{
 

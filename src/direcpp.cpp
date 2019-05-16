@@ -1,4 +1,4 @@
-#include "../include/direcpp.hpp"
+#include "direcpp.hpp"
 
 namespace DireCpp{
 

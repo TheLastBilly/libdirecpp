@@ -1,4 +1,4 @@
-#include "../include/connect_tcp.hpp"
+#include "connect_tcp.hpp"
 
 namespace ConnectTcp{
 

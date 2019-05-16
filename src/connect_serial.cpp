@@ -1,4 +1,4 @@
-#include "../include/connect_serial.hpp"
+#include "connect_serial.hpp"
 
 namespace ConnectSerial{
 
