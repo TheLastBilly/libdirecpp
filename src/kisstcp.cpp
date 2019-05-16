@@ -1,6 +1,6 @@
-#include "kisstcp.hpp"
-#include "ax25.hpp"
-#include "kiss.hpp"
+#include "include/kisstcp.hpp"
+#include "include/ax25.hpp"
+#include "include/kiss.hpp"
 
 namespace KissTcp{
 
