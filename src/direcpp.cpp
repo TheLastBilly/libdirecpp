@@ -54,7 +54,7 @@ namespace DireCpp{
         else
             size = kisstcp->get_arr( &buffer );
         //std::cout << "DireCpp packet size " << size << endl;
-        AX25::ax25_packet packet = {};
+        AX25::ax25_packet packet = { };
         if( size == -1 ){
             packet.size = -1;
             return packet;
@@ -156,10 +156,6 @@ namespace DireCpp{
             delete(kisstcp);
             kisstcp = nullptr;
         }
-    }
-
-    std::string DireCpp::get_info_str(AX25::ax25_packet packet){
-        return std::string(packet.info, packet.info + sizeof(packet.info)/sizeof(packet.info[0]));
     }
 
     //Private functions

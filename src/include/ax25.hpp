@@ -41,7 +41,7 @@ namespace AX25{
         uint8_t digi_count;
         uint8_t info[MAX_INFO];
         uint32_t info_size;
-        uint32_t size;
+        int size;
     };
 
     class AX25{

@@ -42,7 +42,6 @@ namespace DireCpp{
             void change_addr( std::string source , std::string destination );
             uint16_t get_direcpp_msg( uint8_t * ptr );
             bool is_connected();
-            std::string get_info_str(AX25::ax25_packet packet);
 
             std::string rx_call, tx_call;
 
