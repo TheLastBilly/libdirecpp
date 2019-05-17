@@ -14,14 +14,13 @@ Used only to initialize a DireCpp object. If used, the connection type is set to
 
 ## Description:
 Used only to initialize a DireCpp object and set connection options. The connection type will be defined by the value of `type`. If set to `SERIAL_KISS` the connection type will be set to serial, and if set to `TCP_KISS` the connection type will be set to tcp. If neither of the two values is used, the connection type will be set to tcp. The server address (or serial port) is represented by the `addr` variable, and the server port (or baud rate) is represented by the `param` variable.
- 
 # DireCpp::init( void )
 
 ## Return type:
 `int`
 
 ## Description:
-Used to connect to the server with the settings specified in the class constructor. If the connection was successfully stablished, the function will return a `0`, otherwise, it'll return `-1`. It's required to succesfully call this function (or it's alternative) before any further communications done via a DireCpp object. The callsigns used for transmitting and receving packets will be set to the default value (NOCALL).
+Used to connect to the server with the settings specified in the class constructor. If the connection was successfully established, the function will return a `0`, otherwise, it'll return `-1`. It's required to successfully call this function (or it's alternative) before any further communications done via a DireCpp object. The call signs used for transmitting and receiving packets will be set to the default value (NOCALL).
 
 # DireCpp::init( std::string source , std::string destination )
 
@@ -29,7 +28,7 @@ Used to connect to the server with the settings specified in the class construct
 `int`
 
 ## Description:
-Used to connect to the server with the settings specified in the class constructor. If the connection was successfully stablished, the function will return a `0`, otherwise, it'll return `-1`. It's required to succesfully call this function (or it's alternative) before any further communications are done via a DireCpp object. The callsigns used for transmitting and receving packets will be set to `source` (for the transmitting) and `destination` (for receiving).
+Used to connect to the server with the settings specified in the class constructor. If the connection was successfully established, the function will return a `0`, otherwise, it'll return `-1`. It's required to successfully call this function (or it's alternative) before any further communications are done via a DireCpp object. The call signs used for transmitting and receiving packets will be set to `source` (for the transmitting) and `destination` (for receiving).
 
 # DireCpp::change_addr( std::string source , std::string destination )
 
@@ -37,7 +36,7 @@ Used to connect to the server with the settings specified in the class construct
 `None`
 
 ## Description:
-Changes the DireCpp object's call signs by the ones specified by `source` (for the transmitting) and `destination` (for receiving).
+Changes the DireCpp object call signs by the ones specified by `source` (for the transmitting) and `destination` (for receiving).
 
 # DireCpp::transmit( uint8_t * payload, uint32_t size )
 
@@ -61,7 +60,7 @@ Used to receive an array of bytes from the TNC. The packet is returned in the sh
 `AX25::aprs_packet`
 
 ## Description:
-Used to receive an array of bytes from the TNC, but only if said array is contained within a packet with a destination address equal to the direcpp object's source address. The packet is returned in the shape of an APRS packet (`AX25::aprs_packet`).
+Used to receive an array of bytes from the TNC, but only if said array is contained within a packet with a destination address equal to the direcpp object source address. The packet is returned in the shape of an APRS packet (`AX25::aprs_packet`).
 
 # DireCpp::send_string( std::string msg_str )
 
@@ -77,4 +76,4 @@ Used to send a string of characters (`std::string`) to the TNC. If no errors wer
 `std::string`
 
 ## Description
-Returns the the information segment contained within an APRS packet (AX25::aprs_packet) as a string of characters (std::string).   
+Returns the the information segment contained within an APRS packet (AX25::aprs_packet) as a string of characters (std::string).  
