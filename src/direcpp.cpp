@@ -44,7 +44,7 @@ namespace DireCpp{
 
     //Receives and array of bytes (array size determined by return value).
     //The buffer where the initial bytes will be store need to be of size MAX_INFO
-    int DireCpp::receive( uint8_t * store ){
+    AX25::ax25_packet DireCpp::receive( void ){
         uint8_t * buffer;
         int size = 0;
         if(connection_type == SERIAL_KISS)
@@ -54,41 +54,27 @@ namespace DireCpp{
         else
             size = kisstcp->get_arr( &buffer );
         //std::cout << "DireCpp packet size " << size << endl;
+        AX25::ax25_packet packet = {};
         if( size == -1 ){
-            return -1;
+            packet.size = -1;
+            return packet;
         }
-        AX25::ax25_packet packet = ax25.packet_from_raw( buffer, size );
-        uint8_t payload[ax25.raw_frame_size( packet.info_size )];
-        memcpy( packet.call_dest, orig_addr, MAX_ADDR_SIZE );
-        memcpy( store, packet.info, packet.info_size );
+        packet = ax25.packet_from_raw( buffer, size );
         //std::cout << "DireCpp packet size " << packet.info_size << endl;
-        return packet.info_size;
+        return packet;
     }
 
-    int DireCpp::receive_by_call( uint8_t * store ){
-        uint8_t * buffer;
-        int size = 0;
-        if(connection_type == SERIAL_KISS)
-            size = kiss_serial->get_arr( &buffer );
-        else if(connection_type == TCP_KISS)
-            size = kisstcp->get_arr( &buffer );
-        else
-            size = kisstcp->get_arr( &buffer );
-        //std::cout << "DireCpp packet size " << size << endl;
-        if( size == -1 ){
-            return -1;
-        }
-        AX25::ax25_packet packet = ax25.packet_from_raw( buffer, size );
-        uint8_t payload[ax25.raw_frame_size( packet.info_size )];
+    AX25::ax25_packet DireCpp::receive_by_call( void ){
+        AX25::ax25_packet packet = DireCpp::receive();
         bool confirm = true;
         for(uint16_t i = 0; i < MAX_ADDR_SIZE -1 && confirm; i++)
             confirm = packet.call_dest[i] == orig_addr[i];
-        if(!confirm)
-            return -1;
-        //memcpy( packet.call_dest, orig_addr, MAX_ADDR_SIZE );
-        memcpy( store, packet.info, packet.info_size );
-        //std::cout << "DireCpp packet size " << packet.info_size << endl;
-        return packet.info_size;
+        if(!confirm){
+            packet = {};
+            packet.size = -1;
+            return packet;
+        }
+        return packet;
     }
 
     uint8_t DireCpp::send_string( std::string msg_str ){
@@ -170,6 +156,10 @@ namespace DireCpp{
             delete(kisstcp);
             kisstcp = nullptr;
         }
+    }
+
+    std::string DireCpp::get_info_str(AX25::ax25_packet packet){
+        return std::string(packet.info, packet.info + sizeof(packet.info)/sizeof(packet.info[0]));
     }
 
     //Private functions

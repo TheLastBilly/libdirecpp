@@ -101,6 +101,7 @@ namespace AX25{
 
         entry.info_size = packet_size;
         entry.digi_count = digi_count;
+        entry.size = index;
 
         return entry;
 
