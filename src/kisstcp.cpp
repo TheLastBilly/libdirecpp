@@ -22,12 +22,12 @@ namespace KissTcp{
 
     //Starts socket
     int KissTcp::init( void ){
-        connect_tcp.init();
+        return connect_tcp.init();
     }
 
     //Ends session
     void KissTcp::end( void ){
-        connect_tcp.end();
+        return connect_tcp.end();
     }
 
     //Sends 8 bit array (a package) formated as KISS command

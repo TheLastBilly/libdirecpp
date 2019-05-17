@@ -28,7 +28,7 @@ namespace DireCpp{
         public:
 
             DireCpp( void );
-            DireCpp( std::string addr, int param, short t );
+            DireCpp( const char * addr, int param, short t );
             ~DireCpp( void );
             void end( void );
             int init( void );

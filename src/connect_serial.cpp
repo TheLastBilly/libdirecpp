@@ -44,8 +44,10 @@ namespace ConnectSerial{
         cfsetospeed(&tty, baud_rate);
 
         if (tcsetattr(serial_port, TCSANOW, &tty) != 0) {
+            return 1;
             //printf("Error %i from tcsetattr: %s\n", errno, strerror(errno));
         }
+        return 0;
     }
 
     uint8_t ConnectSerial::command_send( uint8_t cmd[], int size ){

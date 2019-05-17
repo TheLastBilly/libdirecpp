@@ -35,7 +35,7 @@ namespace KissSerial{
             int init( void );
             void end( void );
             uint8_t send_arr( uint8_t * raw_pkg, int pkg_size );
-            uint16_t get_arr( uint8_t ** raw_pkg );
+            int get_arr( uint8_t ** raw_pkg );
             bool is_connected();
 
     };

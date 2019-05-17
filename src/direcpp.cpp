@@ -10,14 +10,14 @@ namespace DireCpp{
     /*------------------------------------------------------------------------------------*/
     DireCpp::DireCpp( void ):
     connection_type(-1) { }
-    DireCpp::DireCpp( std::string addr, int param, short t ):
+    DireCpp::DireCpp( const char * addr, int param, short t ):
     connection_type(t){
         switch( connection_type ){
             case SERIAL_KISS:
-                kiss_serial = new KissSerial::KissSerial(addr.c_str(), param);
+                kiss_serial = new KissSerial::KissSerial(addr, param);
                 break;
             case TCP_KISS:
-                kisstcp = new KissTcp::KissTcp(addr.c_str(), param);
+                kisstcp = new KissTcp::KissTcp(addr, param);
                 break;
             default:
                 connection_type = 1;

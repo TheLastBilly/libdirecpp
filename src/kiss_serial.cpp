@@ -22,12 +22,12 @@ namespace KissSerial{
 
     //Starts socket
     int KissSerial::init( void ){
-        connect_serial.init();
+        return connect_serial.init();
     }
 
     //Ends session
     void KissSerial::end( void ){
-        connect_serial.end();
+        return connect_serial.end();
     }
 
     //Sends 8 bit array (a package) formated as KISS command
@@ -38,12 +38,12 @@ namespace KissSerial{
     }
 
     //Gets an AX25 frame as byte array
-    uint16_t KissSerial::get_arr( uint8_t ** raw_pkg ){
+    int KissSerial::get_arr( uint8_t ** raw_pkg ){
 
         uint8_t buffer[PKG_MAX];
         bzero( buffer, PKG_MAX );
 
-        if( connect_serial.command_read( buffer, PKG_MAX ) == -1){
+        if( connect_serial.command_read( buffer, PKG_MAX ) <= 0){
             return -1;
         }
 
