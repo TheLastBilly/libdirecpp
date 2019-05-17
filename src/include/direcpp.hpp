@@ -32,19 +32,22 @@ namespace DireCpp{
             ~DireCpp( void );
             void end( void );
             int init( void );
-            int init( const char * source, const char * dest );
+            int init( std::string source , std::string destination );
             //int init( const char * source, const char * destination, string ip, int port );
             uint8_t transmit( uint8_t * payload, uint32_t size );
             uint8_t set_ssid( uint8_t num, bool source );
             int receive( uint8_t * store );
             int receive_by_call( uint8_t * store );
             uint8_t send_string( std::string msg_str );
-            void change_addr( const char * source, const char * destination );
+            void change_addr( std::string source , std::string destination );
             uint16_t get_direcpp_msg( uint8_t * ptr );
             bool is_connected();
 
+            std::string rx_call, tx_call;
+
         private:
             int connection_type;
+            void str_uppr(string& lower_case);
     };
 }
 

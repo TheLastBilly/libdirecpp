@@ -42,6 +42,8 @@ namespace ConnectTcp{
             //printf("Connection error");
             return 1;
         } //else printf("Connected to server %s \n", SERVER_ADDR);
+        fcntl(sckt, F_SETFL, O_NONBLOCK);
+        
     }
 
     void ConnectTcp::end( void ){

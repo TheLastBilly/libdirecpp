@@ -13,6 +13,7 @@
 #include <netinet/in.h>
 #include <netdb.h>
 #include <arpa/inet.h>
+#include <fcntl.h>
 
 //Direwolf server default ip and port (KISS)
 #define SERVER_ADDR "127.0.0.1"

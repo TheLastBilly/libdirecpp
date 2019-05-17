@@ -108,7 +108,7 @@ namespace DireCpp{
         return connector->init( );
     }*/
 
-    int DireCpp::init( const char * source, const char * destination ){
+    int DireCpp::init( std::string source , std::string destination ){
         DireCpp::change_addr( source, destination );
         if(connection_type == SERIAL_KISS)
             return kiss_serial->init();
@@ -137,9 +137,13 @@ namespace DireCpp{
             return kisstcp->is_connected();
     }
 
-    void DireCpp::change_addr( const char * source, const char * destination ){
-        ax25.ax25_addr_conv( source, orig_addr, true, 0 );
-        ax25.ax25_addr_conv( destination, dest_addr, false, 0 );
+    void DireCpp::change_addr( std::string source , std::string destination ){
+        DireCpp::str_uppr(source);
+        DireCpp::str_uppr(destination);
+        ax25.ax25_addr_conv( source.c_str(), orig_addr, true, 0 );
+        ax25.ax25_addr_conv( destination.c_str(), dest_addr, false, 0 );
+        rx_call = destination;
+        tx_call = source;
     }
 
     void DireCpp::end( void ){
@@ -167,4 +171,14 @@ namespace DireCpp{
             kisstcp = nullptr;
         }
     }
+
+    //Private functions
+    /*------------------------------------------------------------------------------------*/
+
+    void DireCpp::str_uppr(string& lower_case){
+        for(unsigned int i=0;i<lower_case.length();i++){
+            lower_case[i] = toupper(lower_case[i]);
+        }
+    }
+
 }
