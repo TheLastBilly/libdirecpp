@@ -29,7 +29,7 @@ namespace DireCpp{
     /*------------------------------------------------------------------------------------*/
 
     //Sends an array of bytes over AX25
-    uint8_t DireCpp::transmit( uint8_t * payload, uint32_t size ){
+    int DireCpp::transmit( uint8_t * payload, uint32_t size ){
         uint16_t raw_frame_size = ax25.raw_frame_size( size );
         uint8_t buffer[ raw_frame_size ];
         ax25.make_raw_packet( orig_addr, dest_addr, payload, size, buffer );
@@ -44,7 +44,7 @@ namespace DireCpp{
 
     //Receives and array of bytes (array size determined by return value).
     //The buffer where the initial bytes will be store need to be of size MAX_INFO
-    AX25::ax25_packet DireCpp::receive( void ){
+    AX25::aprs_packet DireCpp::receive( void ){
         uint8_t * buffer;
         int size = 0;
         if(connection_type == SERIAL_KISS)
@@ -54,7 +54,7 @@ namespace DireCpp{
         else
             size = kisstcp->get_arr( &buffer );
         //std::cout << "DireCpp packet size " << size << endl;
-        AX25::ax25_packet packet = { };
+        AX25::aprs_packet packet = { };
         if( size == -1 ){
             packet.size = -1;
             return packet;
@@ -64,11 +64,11 @@ namespace DireCpp{
         return packet;
     }
 
-    AX25::ax25_packet DireCpp::receive_by_call( void ){
-        AX25::ax25_packet packet = DireCpp::receive();
+    AX25::aprs_packet DireCpp::receive_by_call( void ){
+        AX25::aprs_packet packet = DireCpp::receive();
         bool confirm = true;
         for(uint16_t i = 0; i < MAX_ADDR_SIZE -1 && confirm; i++)
-            confirm = packet.call_orig[i] == orig_addr[i];
+            confirm = packet.call_dest[i] == orig_addr[i];
         if(!confirm){
             packet = {};
             packet.size = -1;
@@ -77,7 +77,7 @@ namespace DireCpp{
         return packet;
     }
 
-    uint8_t DireCpp::send_string( std::string msg_str ){
+    int DireCpp::send_string( std::string msg_str ){
         uint32_t str_size = msg_str.length();
         const char * msg = msg_str.c_str();
         uint8_t buffer[ str_size ];
@@ -158,7 +158,7 @@ namespace DireCpp{
         }
     }
 
-    std::string DireCpp::get_info_str(AX25::ax25_packet packet){
+    std::string DireCpp::get_info_str(AX25::aprs_packet packet){
         char info_raw[packet.info_size];
         memcpy(info_raw, packet.info, packet.info_size -1);
         return std::string( info_raw );
@@ -174,3 +174,4 @@ namespace DireCpp{
     }
 
 }
+Q

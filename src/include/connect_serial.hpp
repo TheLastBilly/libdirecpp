@@ -22,7 +22,7 @@ namespace ConnectSerial{
         public:
         ConnectSerial( void );
         ConnectSerial( const char * serial_dev, int bd_rate );
-        uint8_t command_send( uint8_t cmd[], int size );
+        int command_send( uint8_t cmd[], int size );
         int command_read( uint8_t * buffer, int size );
         bool is_connected( void );
         int init( void );

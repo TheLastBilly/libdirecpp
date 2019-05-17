@@ -50,7 +50,7 @@ namespace ConnectSerial{
         return 0;
     }
 
-    uint8_t ConnectSerial::command_send( uint8_t cmd[], int size ){
+    int ConnectSerial::command_send( uint8_t cmd[], int size ){
         if(cmd == nullptr)
             return -1;
         else{

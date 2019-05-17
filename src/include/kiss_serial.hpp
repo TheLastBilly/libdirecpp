@@ -34,7 +34,7 @@ namespace KissSerial{
             KissSerial( const char * s_ip, int s_port );
             int init( void );
             void end( void );
-            uint8_t send_arr( uint8_t * raw_pkg, int pkg_size );
+            int send_arr( uint8_t * raw_pkg, int pkg_size );
             int get_arr( uint8_t ** raw_pkg );
             bool is_connected();
 

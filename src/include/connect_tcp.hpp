@@ -31,7 +31,7 @@ namespace ConnectTcp{
 
         ConnectTcp( void );
         ConnectTcp( const char * server_ip, int server_port );
-        uint8_t command_send( uint8_t * cmd, int size );
+        int command_send( uint8_t * cmd, int size );
         void command_send( uint8_t * buffer );
         int command_read( uint8_t * buffer, int size );
         uint16_t get_arr( uint8_t ** raw_pkg );

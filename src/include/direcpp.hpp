@@ -34,15 +34,15 @@ namespace DireCpp{
             int init( void );
             int init( std::string source , std::string destination );
             //int init( const char * source, const char * destination, string ip, int port );
-            uint8_t transmit( uint8_t * payload, uint32_t size );
+            int transmit( uint8_t * payload, uint32_t size );
             uint8_t set_ssid( uint8_t num, bool source );
-            AX25::ax25_packet receive( void );
-            AX25::ax25_packet receive_by_call( void );
-            uint8_t send_string( std::string msg_str );
+            AX25::aprs_packet receive( void );
+            AX25::aprs_packet receive_by_call( void );
+            int send_string( std::string msg_str );
             void change_addr( std::string source , std::string destination );
             uint16_t get_direcpp_msg( uint8_t * ptr );
             bool is_connected();
-            std::string get_info_str(AX25::ax25_packet packet);
+            std::string get_info_str(AX25::aprs_packet packet);
 
             std::string rx_call, tx_call;
 

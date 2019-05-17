@@ -34,7 +34,7 @@
 namespace AX25{
 
     //Contains the relevant information about a AX25 frame
-    struct ax25_packet{
+    struct aprs_packet{
         uint8_t call_orig[ MAX_ADDR_SIZE ];
         uint8_t call_dest[ MAX_ADDR_SIZE ];
         uint8_t digi[ MAX_ADDR_SIZE * MAX_RPTR ];
@@ -53,7 +53,7 @@ namespace AX25{
             AX25( uint8_t control, uint8_t pid );
             void make_raw_packet( uint8_t * addr_orig, uint8_t * addr_dest,  uint8_t * data, uint32_t data_size, uint8_t * raw_frame );
             uint16_t raw_frame_size( int size );
-            ax25_packet packet_from_raw( uint8_t * raw_packet, uint16_t packet_size );
+            aprs_packet packet_from_raw( uint8_t * raw_packet, uint16_t packet_size );
             uint8_t build_ssid( uint8_t id, bool source );
             void ax25_addr_conv( const char * call, uint8_t * arr, bool source, uint8_t num );
             //For debbuging

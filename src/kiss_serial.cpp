@@ -31,7 +31,7 @@ namespace KissSerial{
     }
 
     //Sends 8 bit array (a package) formated as KISS command
-    uint8_t KissSerial::send_arr( uint8_t * raw_pkg, int pkg_size ){
+    int KissSerial::send_arr( uint8_t * raw_pkg, int pkg_size ){
         int size = 0;
         uint8_t *pkg = kiss.send_arr(raw_pkg, pkg_size, &size);
         return connect_serial.command_send(pkg, size);

@@ -65,9 +65,9 @@ namespace AX25{
     }
 
     //Returns a ax25_paclet structure based on raw AX25 frame
-    ax25_packet AX25::packet_from_raw( uint8_t * raw_packet, uint16_t packet_size ){
+    aprs_packet AX25::packet_from_raw( uint8_t * raw_packet, uint16_t packet_size ){
 
-        ax25_packet entry = {};
+        aprs_packet entry = {};
         //If there's not enough space for at least two addresses plus the necessary flags
         if( packet_size < (2 * (MAX_ADDR_SIZE)) + 2 ){
             //Error/Debug

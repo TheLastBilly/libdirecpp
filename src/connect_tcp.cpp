@@ -58,7 +58,7 @@ namespace ConnectTcp{
     }
 
     //Write raw byte array over KISS 
-    uint8_t ConnectTcp::command_send( uint8_t * cmd, int size ){
+    int ConnectTcp::command_send( uint8_t * cmd, int size ){
         if(cmd == nullptr)
             return -1;
         else{
