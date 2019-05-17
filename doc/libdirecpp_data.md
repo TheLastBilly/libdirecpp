@@ -1,4 +1,6 @@
-# AX25::aprs_packet
+# libdirecpp (DireCpp) data structures
+
+## AX25::aprs_packet
 
 ```
 struct aprs_packet{
