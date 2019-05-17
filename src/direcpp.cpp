@@ -68,7 +68,7 @@ namespace DireCpp{
         AX25::ax25_packet packet = DireCpp::receive();
         bool confirm = true;
         for(uint16_t i = 0; i < MAX_ADDR_SIZE -1 && confirm; i++)
-            confirm = packet.call_dest[i] == orig_addr[i];
+            confirm = packet.call_orig[i] == orig_addr[i];
         if(!confirm){
             packet = {};
             packet.size = -1;
@@ -158,10 +158,16 @@ namespace DireCpp{
         }
     }
 
+    std::string DireCpp::get_info_str(AX25::ax25_packet packet){
+        char info_raw[packet.info_size];
+        memcpy(info_raw, packet.info, packet.info_size -1);
+        return std::string( info_raw );
+    }
+
     //Private functions
     /*------------------------------------------------------------------------------------*/
 
-    void DireCpp::str_uppr(string& lower_case){
+    void DireCpp::str_uppr(std::string& lower_case){
         for(unsigned int i=0;i<lower_case.length();i++){
             lower_case[i] = toupper(lower_case[i]);
         }
