@@ -17,7 +17,7 @@ int main( int argc, char ** argv ){
     if(!direcpp.init(EXAMPLE_CALLSIGN, EXAMPLE_CALLSIGN)){
         bool good = false;
         //Create an empty packet 
-        AX25::ax25_packet packet = {};
+        AX25::aprs_packet packet = {};
 
         //Whenever you get something, stop
         while(!good){
