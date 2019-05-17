@@ -78,4 +78,4 @@ Used to send a string of characters (`std::string`) to the TNC. If no errors wer
 `std::string`
 
 ### Description
-Returns the the information segment contained within an APRS packet (AX25::aprs_packet) as a string of characters (std::string).  
+Returns the the information segment contained within an APRS packet (`AX25::aprs_packet`) as a string of characters (`std::string`).  
