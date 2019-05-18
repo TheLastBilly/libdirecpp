@@ -20,12 +20,7 @@ int main( int argc, char ** argv ){
         AX25::aprs_packet packet = {};
 
         //Whenever you get something, stop
-        while(!good){
-            //Get packet info
-            packet = direcpp.receive();
-            if(packet.size > -1)
-                good = true;
-        }
+        while(!direcpp.receive(&packet)){ }
 
         //Get packet's info as a string and print it
         std::cout << direcpp.get_info_str(packet) << std::endl;

@@ -42,12 +42,10 @@ namespace ConnectTcp{
         tv.tv_usec = TIME_OUT;
         tv.tv_sec = 0;
         if ( setsockopt(sckt, SOL_SOCKET, SO_RCVTIMEO, (const char*)&tv, sizeof tv) != 0 ){
-            printf("Connection error 1\n");
             //debug
             return 1;
         }
         if ( connect(sckt, (struct sockaddr *)&serveraddr, sizeof(serveraddr)) != 0 ){
-            printf("Connection error 2\n");
             return 1;
         } //else printf("Connected to server %s \n", SERVER_ADDR);
         fcntl(sckt, F_SETFL, O_NONBLOCK);

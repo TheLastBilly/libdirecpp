@@ -48,13 +48,13 @@ Changes the DireCpp object call signs by the ones specified by `source` (for the
 ### Description:
 Used to send 8 bit data to the TNC. The pointer `payload` must contain the memory address of where the data to be sent is located, and `size` must contain the size of that data. If no errors were encountered, the amount of bytes sent is returned, otherwise a `-1` is returned.
 
-## DireCpp::receive( void )
+## DireCpp::receive( AX25::aprs_packet pckt* )
 
 ### Return type:
-`AX25::aprs_packet`
+`bool`
 
 ### Description:
-Used to receive an array of bytes from the TNC. The packet is returned in the shape of an APRS packet (`AX25::aprs_packet`).
+Used to receive an array of bytes from the TNC. The packet received is store on the packet object referenced by the `pckt` pointer. If no error were encountered, it will return `true`, otherwise it'll return `false`.
 
 ## DireCpp::receive_by_call( void )
 
@@ -62,7 +62,7 @@ Used to receive an array of bytes from the TNC. The packet is returned in the sh
 `AX25::aprs_packet`
 
 ### Description:
-Used to receive an array of bytes from the TNC, but only if said array is contained within a packet with a destination address equal to the direcpp object source address. The packet is returned in the shape of an APRS packet (`AX25::aprs_packet`).
+Used to receive an array of bytes from the TNC, but only if said array is contained within a packet with a destination address equal to the direcpp object source address. The packet received is store on the packet object referenced by the `pckt` pointer. If no error were encountered, it will return `true`, otherwise it'll return `false`.
 
 ## DireCpp::send_string( std::string msg_str )
 
