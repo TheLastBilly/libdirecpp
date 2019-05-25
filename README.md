@@ -5,7 +5,7 @@ libdirecpp is a C/C++ library used to control Terminal Node Controllers (TNCs) f
 ## What can it do?
 
 * Communicate with TNCs over tcp/serial using the KISS protocol
-* Parse and create APRS frames
+* Parse and create APRS packets
 
 ## How can I install it?
 
