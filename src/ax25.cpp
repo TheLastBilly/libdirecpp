@@ -56,10 +56,10 @@ namespace AX25{
         memcpy( frame + frame_pos , addr_orig, MAX_ADDR_SIZE );
         frame_pos += MAX_ADDR_SIZE;
 
-        frame[ frame_pos ] = control;
+        frame[ frame_pos ] = pid;
         frame_pos += 1;
 
-        frame[ frame_pos ] = pid;
+        frame[ frame_pos ] = control;
         frame_pos += 1;
 
         memcpy( frame + frame_pos , data, data_size );
