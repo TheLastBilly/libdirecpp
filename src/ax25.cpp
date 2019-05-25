@@ -8,16 +8,20 @@
 
 #include "include/ax25.hpp"
 
+#define PID 0x03
+#define CONTROL 0xf0
+
 namespace AX25{
 
 
     //Class constructor
     /*------------------------------------------------------------------------------------*/
-    AX25::AX25( void ){}
-    AX25::AX25( uint8_t ctl, uint8_t p ){
-        control = ctl;
-        pid = p;
-    }
+    AX25::AX25( void ):
+    control(CONTROL),
+    pid(PID){ }
+    AX25::AX25( uint8_t ctl, uint8_t p ):
+    control(ctl),
+    pid(p){}
 
     //Public functions
     /*------------------------------------------------------------------------------------*/

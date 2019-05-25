@@ -44,8 +44,8 @@ add_executable( myproject ${SOURCES} )
 And then just run cmake (I recommend you do it on a separate folder).
 
 ```
-mkdir binaries
-cd binaries
+mkdir build
+cd build
 cmake ..
 ```
 
@@ -54,6 +54,18 @@ Lastly just type `make` to compile your code!
 ## And how do I use it?
 
 I have prepared a few examples on the [examples](https://github.com/TheLastBilly/libdirecpp/tree/master/examples) folder, so you can take a look in there to see a basic use case of the library. For a more detail explanation, you can look at the documentation at the [doc](https://github.com/TheLastBilly/libdirecpp/tree/master/doc) folder.
+
+### Compiling examples
+
+Just go to the folder where the exmaple's `CMakeLists.txt` file is located, and type the following commands to compile it:
+
+```
+mkdir build
+cd build
+cmake ..
+```
+
+Then, while inside that same directory, type `bin/[name of the example]` to run it.
 
 ## Resources
 * [AX.25 Link-Layer Protocol Specification](https://tapr.org/pub_ax25.html)

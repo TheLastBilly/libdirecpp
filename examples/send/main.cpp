@@ -14,9 +14,9 @@ int main( int argc, char ** argv ){
 
     //Initialize direcpp with the wanted calls, and check if 
     //connection is stable
-    if(!direcpp.init(EXAMPLE_CALLSIGN, EXAMPLE_CALLSIGN)){
+    if(!direcpp.init("VE2JMN", "APX211")){
         //Send string over direcpp
-        direcpp.send_string("This is a string!");
+        direcpp.send_string("Hello World!");
     }else{
         //If something went wrong, let me know
         std::cout << "Connection error" << std::endl;

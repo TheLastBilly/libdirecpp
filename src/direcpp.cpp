@@ -42,6 +42,9 @@ namespace DireCpp{
         uint16_t raw_frame_size = ax25.raw_frame_size( size );
         uint8_t buffer[ raw_frame_size ];
         ax25.make_raw_packet( orig_addr, dest_addr, payload, size, buffer );
+        for(int i = 0; i < raw_frame_size; i++ ){
+            printf("%02X ", buffer[i]);
+        }
         if(connection_type == SERIAL_KISS)
             return kiss_serial->send_arr( buffer, raw_frame_size );
         else if(connection_type == TCP_KISS)

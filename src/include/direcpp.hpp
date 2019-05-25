@@ -21,6 +21,9 @@
 #define SERIAL_KISS 0
 #define TCP_KISS 1
 
+#define TCP_CONNECTION_ERROR 0
+#define SERIAL_CONNECTION_ERROR 1
+
 using namespace std;
 
 namespace DireCpp{
@@ -53,6 +56,7 @@ namespace DireCpp{
             std::string get_info_str(AX25::aprs_packet packet);
 
             std::string rx_call, tx_call;
+            int errno;
 
         private:
             int connection_type;

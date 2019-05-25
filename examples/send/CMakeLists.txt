@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-project ("receive_tcp")
+project ("send")
 
 add_compile_options(-std=c++11)
 
@@ -11,4 +11,4 @@ file(GLOB SOURCES
 
 set(EXECUTABLE_OUTPUT_PATH "bin")
 
-add_executable( receive_tcp ${SOURCES} )
+add_executable( send ${SOURCES} )
