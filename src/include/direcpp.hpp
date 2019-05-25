@@ -4,7 +4,7 @@
 // All rights reserved.
 //
 // This source code is licensed under the BSD-style license found in the
-// LICENSE file in the root directory of this source tree. 
+// LICENSE file in the root directory of this source tree.
 
 #ifndef DIRE_HPP
 #define DIRE_HPP
@@ -27,6 +27,12 @@
 using namespace std;
 
 namespace DireCpp{
+    struct connection_settings {
+        int net_port, baud_rate;
+        const char * ip;
+        const char * port;
+        int type;
+    };
 
     class DireCpp{
 
@@ -39,7 +45,7 @@ namespace DireCpp{
         public:
 
             DireCpp( void );
-            DireCpp( const char * addr, int param, short t );
+            DireCpp( connection_settings con_set );
             ~DireCpp( void );
             void end( void );
             int init( void );

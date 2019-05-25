@@ -4,7 +4,7 @@
 // All rights reserved.
 //
 // This source code is licensed under the BSD-style license found in the
-// LICENSE file in the root directory of this source tree. 
+// LICENSE file in the root directory of this source tree.
 
 
 #include "include/direcpp.hpp"
@@ -19,14 +19,14 @@ namespace DireCpp{
     /*------------------------------------------------------------------------------------*/
     DireCpp::DireCpp( void ):
     connection_type(-1) { }
-    DireCpp::DireCpp( const char * addr, int param, short t ):
-    connection_type(t){
+    DireCpp::DireCpp( connection_settings con_set ):
+    connection_type( con_set.type ){
         switch( connection_type ){
             case SERIAL_KISS:
-                kiss_serial = new KissSerial::KissSerial(addr, param);
+                kiss_serial = new KissSerial::KissSerial(con_set.port, con_set.baud_rate);
                 break;
             case TCP_KISS:
-                kisstcp = new KissTcp::KissTcp(addr, param);
+                kisstcp = new KissTcp::KissTcp(con_set.ip, con_set.net_port);
                 break;
             default:
                 connection_type = 1;
