@@ -28,9 +28,9 @@ using namespace std;
 
 namespace DireCpp{
     struct connection_settings {
-        int net_port, baud_rate;
-        const char * ip;
-        const char * port;
+        int server_port, serial_baud;
+        const char * server_ip;
+        const char * serial_port;
         int type;
     };
 
