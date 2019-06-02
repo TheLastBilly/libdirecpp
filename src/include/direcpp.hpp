@@ -16,7 +16,7 @@
 //Default PID and
 #define PID_D NO_LAYER
 #define CONTROL_D 0x03
-#define NO_CALL "NO CALL"
+#define NO_CALL "NOCALL"
 
 #define SERIAL_KISS 0
 #define TCP_KISS 1
