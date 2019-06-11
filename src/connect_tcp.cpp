@@ -4,7 +4,7 @@
 // All rights reserved.
 //
 // This source code is licensed under the BSD-style license found in the
-// LICENSE file in the root directory of this source tree. 
+// LICENSE file in the root directory of this source tree.
 
 #include "include/connect_tcp.hpp"
 
@@ -50,7 +50,7 @@ namespace ConnectTcp{
         } //else printf("Connected to server %s \n", SERVER_ADDR);
         fcntl(sckt, F_SETFL, O_NONBLOCK);
         return 0;
-        
+
     }
 
     void ConnectTcp::end( void ){
@@ -63,7 +63,7 @@ namespace ConnectTcp{
         return read( sckt, buffer, size );
     }
 
-    //Write raw byte array over KISS 
+    //Write raw byte array over KISS
     int ConnectTcp::command_send( uint8_t * cmd, int size ){
         if(cmd == nullptr)
             return -1;

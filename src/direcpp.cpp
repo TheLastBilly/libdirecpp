@@ -64,11 +64,15 @@ namespace DireCpp{
             size = kisstcp->get_arr( &buffer );
         //std::cout << "DireCpp packet size " << size << endl;
         AX25::aprs_packet packet = { };
-        if( size == -1 )
+        if( size < 0 ){
             return false;
-        packet = ax25.packet_from_raw( buffer, size );
-        //std::cout << "DireCpp packet size " << packet.info_size << endl;
-        *pckt = packet;
+        }
+        else{
+            packet = ax25.packet_from_raw( buffer, size );
+            //std::cout << "DireCpp packet size " << packet.info_size << endl;
+            *pckt = packet;
+        }
+
         return true;
     }
 

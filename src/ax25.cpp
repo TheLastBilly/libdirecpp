@@ -4,7 +4,7 @@
 // All rights reserved.
 //
 // This source code is licensed under the BSD-style license found in the
-// LICENSE file in the root directory of this source tree. 
+// LICENSE file in the root directory of this source tree.
 
 #include "include/ax25.hpp"
 
@@ -102,15 +102,14 @@ namespace AX25{
 
         memcpy( entry.call_orig, raw_packet + index, MAX_ADDR_SIZE );
         index += MAX_ADDR_SIZE;
-
         uint8_t digi_count = 0;
-        for( ; digi_count < addr_count - 2; digi_count++ ){
-            memcpy( entry.digi + (digi_count * (MAX_ADDR_SIZE)), raw_packet + index + (digi_count * (MAX_ADDR_SIZE)), MAX_ADDR_SIZE );
+        if( !(raw_packet[index - 1] & 0b0000001) ){
+            for( ; digi_count < addr_count - 2 && !(raw_packet[index + digi_count * MAX_ADDR_SIZE ] & 0b0000001); digi_count++ ){
+                memcpy( entry.digi + (digi_count * (MAX_ADDR_SIZE)), raw_packet + index + (digi_count * (MAX_ADDR_SIZE)), MAX_ADDR_SIZE );
+            }
         }
-        index += MAX_ADDR_SIZE * digi_count + 2;
-
-        memcpy( entry.info, raw_packet + index, packet_size - index );
-
+        memcpy( entry.info, raw_packet + index, packet_size - index);
+        AX25::print_arr(raw_packet, packet_size);
         entry.info_size = packet_size;
         entry.digi_count = digi_count;
         entry.size = index;
