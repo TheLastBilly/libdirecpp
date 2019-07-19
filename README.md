@@ -13,43 +13,26 @@ libdirecpp is a C/C++ library used to control Terminal Node Controllers (TNCs) f
 
 * g++
 * make
-* cmake
+* autotools
 
 ### Installation
 
-At the moment, there's no a official installation method, so feel free to clone this library into your projects and use it as you so choose. The easiest method that works for me it's just to make a CMakeLists.txt file and add libdirecpp to project's sources.
-
-For example:
-```
-CMakeLists.txt file:
---------------------
-
-cmake_minimum_required(VERSION 3.0)
-project ("myproject")
-
-add_compile_options(-std=c++11)
-
-file(GLOB SOURCES
-    path/to/libdirecpp/src/include/*.hpp
-    path/to/libdirecpp/src/*.cpp
-    ...
-    (My project's sources)
-)
-
-set(EXECUTABLE_OUTPUT_PATH "bin")
-
-add_executable( myproject ${SOURCES} )
-```
-
-And then just run cmake (I recommend you do it on a separate folder).
+Download a release version from this github repository and do de following commands on the directory it is located.
 
 ```
-mkdir build
-cd build
-cmake ..
+tar -xvf libdirecpp-x.x.x.tar.gz
+cd libdirecpp-x.x.x.tar.gz
+./configure
+make
+sudo make install
 ```
+Note 1: x.x.x represents the release version you downloaded.
 
-Lastly just type `make` to compile your code!
+Note 2: You might have to add /usr/local/lib to your LD_LIBRARY_PATH system variable. You can do so by typing the following commands:
+```
+echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/" >> ~/.bashrc
+source ~/.bashrc
+```
 
 ## And how do I use it?
 
@@ -57,15 +40,13 @@ I have prepared a few examples on the [examples](https://github.com/TheLastBilly
 
 ### Compiling examples
 
-Just go to the folder where the exmaple's `CMakeLists.txt` file is located, and type the following commands to compile it:
+Just go to the folder where the exmaple is located, and type the following command to compile it:
 
 ```
-mkdir build
-cd build
-cmake ..
+g++ -ldirecpp main.cpp -o [name of the example]
 ```
 
-Then, while inside that same directory, type `bin/[name of the example]` to run it.
+Then, while inside that same directory, type `./[name of the example]` to run it.
 
 ## Resources
 * [KISS (TNC)](https://en.wikipedia.org/wiki/KISS_(TNC))
