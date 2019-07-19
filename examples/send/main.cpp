@@ -1,6 +1,6 @@
 #include <iostream>
 #include <termios.h>
-#include "../../src/include/direcpp.hpp"
+#include <direcpp.hpp>
 
 #define EXAMPLE_IP "127.0.0.1"
 #define EXAMPLE_PORT 8001
