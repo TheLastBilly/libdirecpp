@@ -4,9 +4,9 @@
 // All rights reserved.
 //
 // This source code is licensed under the BSD-style license found in the
-// LICENSE file in the root directory of this source tree. 
+// LICENSE file in the root directory of this source tree.
 
-#include "include/connect_serial.hpp"
+#include "connect_serial.hpp"
 
 namespace ConnectSerial{
 
@@ -16,7 +16,7 @@ namespace ConnectSerial{
     baud_rate( bd_rate ){
         serial_port = open( serial_dev, O_RDWR);
     }
-    
+
     int ConnectSerial::init( void ){
         if(serial_port == -1)
             return 1;

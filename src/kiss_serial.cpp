@@ -4,12 +4,12 @@
 // All rights reserved.
 //
 // This source code is licensed under the BSD-style license found in the
-// LICENSE file in the root directory of this source tree. 
+// LICENSE file in the root directory of this source tree.
 
 
-#include "include/kiss_serial.hpp"
-#include "include/ax25.hpp"
-#include "include/kiss.hpp"
+#include "kiss_serial.hpp"
+#include "ax25.hpp"
+#include "kiss.hpp"
 
 namespace KissSerial{
 

@@ -6,7 +6,7 @@
 // This source code is licensed under the BSD-style license found in the
 // LICENSE file in the root directory of this source tree.
 
-#include "include/ax25.hpp"
+#include "ax25.hpp"
 
 #define PID 0x03
 #define CONTROL 0xf0
