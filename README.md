@@ -16,7 +16,7 @@ libdirecpp is a C/C++ library used to control Terminal Node Controllers (TNCs) f
 * autotools
 
 ### Installation
-
+#### Requires sudo
 Download a release version from this github repository and do de following commands on the directory it is located.
 
 ```
@@ -28,10 +28,9 @@ sudo make install
 ```
 Note 1: x.x.x represents the release version you downloaded.
 
-Note 2: You might have to add /usr/local/lib to your LD_LIBRARY_PATH system variable. You can do so by typing the following commands:
+Note 2: You might have to create a symlink from `libdirecpp` to /usr/lib. You can do so by typing the following command:
 ```
-echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/" >> ~/.bashrc
-source ~/.bashrc
+sudo ln -s /usr/local/lib/libdirecpp.* /usr/lib/
 ```
 
 ## And how do I use it?
