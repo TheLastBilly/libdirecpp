@@ -11,7 +11,7 @@ file(
     GLOB SRCS
 
     "*.cpp"
-    "*.hpp"
+    "src/*.hpp"
 )
 
 add_executable( ${EXAMPLE_NAME} ${SRCS} $<TARGET_OBJECTS:${PROJECT_NAME}>)
@@ -30,6 +30,19 @@ add_library(
     ${PROJECT_NAME}
 
     ${SRCS}
+)
+
+install(
+    TARGETS ${PROJECT_NAME}
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+    INCLUDES DESTINATION include/direcpp
+)
+
+install(
+    DIRECTORY ${CMAKE_SOURCE_DIR}/src/
+    DESTINATION include/${PROJECT_NAME} 
+    FILES_MATCHING PATTERN "*.hpp"
 )
 
 add_subdirectory(examples)
